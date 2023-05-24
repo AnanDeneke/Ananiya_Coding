@@ -1,0 +1,30 @@
+printList
+insertToPosition 3 carolyn fusch 1.72 21
+printList
+deleteFromTail
+insertToPosition 3 david anderssonn 1.75 28
+insertToHead jonathan green 1.68 27
+findPosition david
+printListInfo
+deleteFromPosition 9
+insertToPosition 3 david anderssonn 1.75 28
+insertToTail sylvia white 1.81 22
+deleteFromTail
+insertToHead john brown 1.76 35 
+deleteFromPosition 3
+findPosition david
+findPosition carolyn
+insertToPosition 3 david anderssonn 1.75 28
+printList
+printList
+insertToPosition 0 carolyn fusch 1.72 21
+insertToPosition 3 david anderssonn 1.75 28
+printListInfo
+deleteFromTail
+insertToHead abc abd 1.2 3
+deleteFromHead
+printList
+deleteFromPosition 3
+printListInfo
+deleteList
+weirdCommand

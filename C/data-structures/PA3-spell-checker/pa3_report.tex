@@ -1,0 +1,90 @@
+\documentclass[addpoints,11pt,answers]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{logicproof}
+\usepackage{multicol}
+\usepackage{environ}
+\usepackage{xcolor}
+
+\newcommand{\limit}[1]{ \lim_{n \rightarrow \infty} \left( #1 \right) }
+\bracketedpoints
+\qformat{Question \thequestion{} : \totalpoints{} \points \hfill}
+
+%These setting will make the code areas look Pretty
+\lstset{
+	escapechar=~,
+	numbers=left, 
+	%numberstyle=\tiny, 
+	stepnumber=1, 
+	firstnumber=1,
+	%numbersep=5pt,
+	language=C,
+	stringstyle=\itfamily,
+	%basicstyle=\footnotesize, 
+	showstringspaces=false,
+	frame=single
+}
+
+\title{CS260 - Data Structure\\ Programming Assignment 3: Spell Checker \\ Assignment Report}
+
+\author{Fitsum Alebachew fa496}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+\question {\bf Data Structure:} Answer the question below regarding the data structure you used in your implementation:
+
+    \begin{parts}
+     \part[2] {\bf Overview of Hash Table:} Briefly explain the hash table you used to store the dictionary on memory. What was the advantage of using an open hash table over a closed hash table?
+     \begin{solution}
+       It is an open hash table that uses linked lists in each hash value address. It is better than a closed hash table in its ability to store more than one element with the same hash value.
+     \end{solution}
+     \part[2] {\bf Hash function:} Given a single word as input, how did you define your hash function? Briefly explain its behavior.
+     \begin{solution}
+       The hash function uses the char values of the characters and adds them up by multiplying by 101 before adding consecutive characters.
+     \end{solution}
+     \part[4] {\bf Statistics about your Hash Table:} How large of a hash table did you use? How many times did collisions happen when you were loading the dictionary initially? What was the length of max/min/average linked list in your Open Hash Table? (refer to the last slides of lecture 08\_hashTables.pdf for an example statistical analysis of a hash table)
+     \begin{solution}
+         I used the number of words in the dictionary as the length of the hash table. The average number of elements in a row is thus 1. The min will be 0 and the max will be 2.
+     \end{solution}
+    \end{parts}
+
+\question {\bf Searching:} Answer the question below regarding how you searched for words in the hash table:
+    \begin{parts}
+     \part[4] For the words that you couldn't find in the dictionary, how did you check for alternative spellings for the three types of common errors that you were asked to check for?
+     \begin{solution}
+         I checked for each specified case separately by adding/deleting/shifting letters in the input file words and seeing if they are members of the hash table.
+     \end{solution}
+     \part[2] In terms of the size of the input text defined as $n$ words and dictionary size defined as $m$ words, what was the {\bf time complexity} of spell checking for the entire input text {\bf to identify mistyped words}?
+     \begin{solution}
+         This is n times the time complexity of searching for one word which is $O(N/S)=O(1)$. This comes to be $O(n)$.
+     \end{solution}
+     \part[2] With $n$ and $m$ defined same as above, what was the time complexity of spell checking {\bf for a single word to suggest alternative spellings}?
+     \begin{solution}
+         This checks multiple cases for each word. But since it is multiplied by a constant, the time complexity is still $O(1)$.
+     \end{solution}
+    \end{parts}
+    
+\question {\bf Overall:}  
+\begin{parts}
+    \part[2] Do you think your program could have been improved? If so, how? What would improve: runtime, memory usage, both? Considering the statistics you calculated on the first problem, what could be a good balance point for the size of your hash table for an optimal memory usage and runtime?
+    \begin{solution}
+        The size of the hash table gives it a fast running time, since collisions will be minimized. However, this increases the space complexity so a better ratio between the length of the table and the number of words being inserted will be better. The ratio might depend on our need for better space vs time complexity.
+    \end{solution}
+    \part[2] If you were to implement a real life spell checker, how would you do it? That is to say, in practical use of a spell checker, what could you do to offer a more efficient program to the end user?
+    \begin{solution}
+        More cases should be checked like missing characters in the middle of the word, or added characters in the middle of the word.
+    \end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}

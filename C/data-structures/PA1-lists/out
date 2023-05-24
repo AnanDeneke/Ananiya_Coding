@@ -1,0 +1,24 @@
+List is empty!!
+Invalid insert!
+List is empty!!
+Invalid delete!
+Invalid insert!
+-1
+size:1, capacity:2
+Invalid delete!
+Invalid insert!
+Invalid delete!
+-1
+-1
+Invalid insert!
+[0]	john	brown	1.76	35
+[1]	jonathan	green	1.68	27
+[0]	john	brown	1.76	35
+[1]	jonathan	green	1.68	27
+size:4, capacity:4
+[0]	carolyn	fusch	1.72	21
+[1]	john	brown	1.76	35
+[2]	jonathan	green	1.68	27
+Invalid delete!
+size:3, capacity:4
+Invalid command: <weirdCommand>

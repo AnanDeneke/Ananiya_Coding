@@ -1,0 +1,69 @@
+\documentclass[addpoints,11pt,answers]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{logicproof}
+\usepackage{multicol}
+\usepackage{environ}
+\usepackage{xcolor}
+
+\newcommand{\limit}[1]{ \lim_{n \rightarrow \infty} \left( #1 \right) }
+\bracketedpoints
+\qformat{Question \thequestion{} : \totalpoints{} \points \hfill}
+
+%These setting will make the code areas look Pretty
+\lstset{
+	escapechar=~,
+	numbers=left, 
+	%numberstyle=\tiny, 
+	stepnumber=1, 
+	firstnumber=1,
+	%numbersep=5pt,
+	language=C,
+	stringstyle=\itfamily,
+	%basicstyle=\footnotesize, 
+	showstringspaces=false,
+	frame=single
+}
+
+\title{CS260 - Data Structure\\ Programming Assignment 5: Sliding Puzzle \\ Assignment Report}
+
+\author{Write your name and student id here}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+\question {\bf Big Picture:} Draft a pictorial representation of your solution to the problem where you indicate the data structures you used. Also provide an explanation of your image. You should be answering the following questions:
+\begin{parts}
+    \part[2] What does your node structure look like? what information do you store there, why? 
+    \begin{solution}
+    Your answer comes here.
+    \end{solution}
+    \part[2] How do you keep track of nodes in your program? Do you generate all possible nodes, or generate them as you visit neighboring nodes? Which data structure did you use to store the nodes? How? Explain.
+    \part[2] How did you keep track of which nodes to explore next? What data structure did you use? Explain the details of your implementation.
+\end{parts}
+
+\question[8] {\bf Flow of the algorithm:} Starting with an initial board, provide a walk through of your algorithm in plain English (use bullet points to have an easy to follow explanation), by answering;
+\begin{itemize}
+    \item how your program generates new nodes,
+    \item in what order/why does it insert the node (or pointer of the node) into the data structures you listed above, 
+    \item how does your algorithm determine when to terminate its search?
+\end{itemize}
+    
+\question {\bf Space and time complexity:}  
+\begin{parts}
+    \part[2] What is the time complexity of your algorithm? Make an analysis by explaining your assumptions and reasoning. 
+    \part[2] What is the time space of your algorithm? Make an analysis by explaining your assumptions and reasoning.
+    \part[2] Could you have achieved a better space and/or time complexity? If so, how?
+\end{parts}
+
+\end{questions}
+\end{document}
