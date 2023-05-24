@@ -1,0 +1,194 @@
+/*                         Welcome to Lights Out!
+ *         The Game of Passing Pointers and Array Manipulations.
+ *
+ *               Drexel University, ECEC-201 -- Project 1
+ *
+                 DUE SUNDAY, NOVEMBER 1ST BEFORE MIDNIGHT
+ *
+ *                        [BEGIN ASAP, SERIOUSLY!]
+ * --------------------------------------------------------------------
+ *
+ * THE GOAL:
+ *   The player tries to turn off all of the lights in the house by
+ *   choosing window numbers.  Problem is, when a window is chosen,
+ *   not only does its state toggle, but so do the states of the
+ *   adjacent windows!  (Only top, bottom, left, right -- not diagonals)
+ *
+ *   Windows are numbered top to bottom, left to right like this:
+ *
+ *   1 2 3        For the following example, let's use:
+ *   4 5 6             # - "On"
+ *   7 8 9             O - "Off"
+ *
+ * EXAMPLE:
+ *
+ *   O O #   User: 7   O O #   User: 5   O # #   User: 3   O O O
+ *   O # O   ------>   # # O   ------>   O O #   ------>   O O O
+ *   # O O             O # O             O O O             O O O
+ *
+ *  initial                                               winning
+ *   state                                               solution
+ *
+ * --------------------- THE DEVELOPMENT PROCESS ---------------------
+ *
+ *                             +--------+
+ *                             | STEP 1 |
+ *                             +--------+
+ *                            [20 POINTS]
+ *                          
+ *   Oh no!  The array `state[]` defined in `main()` has been
+ *   initialized with 0's (indicating lights that are out) and 1's
+ *   (indicating lights that are on) but the graphics don't seem to be
+ *   synchronized to the game state!  This is because the
+ *   `window_update_graphics()` function called by `house_init()` at the
+ *   start of `main()` has not yet been written!  Your first goal is to
+ *   implement the function `window_update_graphics()`.  Once you have
+ *   that working, the game should start with the correct windows lit
+ *   and it will be time for you to move on to STEP 2.
+ *
+ *   Hint: You'll probably want to use a switch-case statement
+ *         to set the values of your for-loop iteration variables
+ *         for the specified window you need to fill in.
+ *         (Alternatively, you could look them up in an array!)
+ *
+ *                             +--------+
+ *                             | STEP 2 |
+ *                             +--------+
+ *                            [10 POINTS]
+ *
+ *   With `window_update_graphics()` now working, it's time to start
+ *   working on toggling windows based on keyboard input!  For now, see
+ *   if you can simply toggle a single window by entering its number.
+ *   (Don't worry about the neighboring windows for now!)  Once you can
+ *   toggle single windows by pressing their corresponding number on the
+ *   keyboard, it's time to advance to STEP 3!
+ *
+ *     Hints:
+ *      - First, work on toggling the correct value in the state array.
+ *
+ *      - Second, work on updating the graphics after the state array
+ *        has been updated.
+ *
+ *      - Converting the window number into the zero indexed (x,y)
+ *        coordinates of the window can easily be done using the / and %
+ *        operators.  That's right!  Math!  ^_^
+ *
+ *                             +--------+
+ *                             | STEP 3 |
+ *                             +--------+
+ *                            [10 POINTS]
+ *
+ *   So, you can toggle individual windows now!  Congratulations!
+ *   Now, add the logic necessary to toggle the specified window's
+ *   neighbors as well!  Be careful here!  If a window is on an edge, it
+ *   will only have 3 neighbors.  If it is in a corner, it will only
+ *   have 2!  Only the window in the center (#5) has all 4 neighbors!
+ *
+ *     Hints:
+ *      - You will probably need to update some of the code you just
+ *        wrote in STEP 2.
+ *
+ *                             +--------+
+ *                             | STEP 4 |
+ *                             +--------+
+ *                            [10 POINTS]
+ *
+ *   So, it looks like you are pretty much done! (...but not quite.)
+ *   You still need to check for when all the lights are out!
+ *   (Otherwise, how will the player know when they have won?!)
+ *
+ *     Hints:
+ *      - Iterating over the state array and doing a bit of quick
+ *        math or Boolean logic should do the trick!
+ *
+ *
+ * -------------------------- GRADING ---------------------------------
+ *
+ *   Code either works to specification or it doesn't.  That's a fact.
+ *
+ *   In order to receive points for a STEP, your program needs to exhibit
+ *   the specified behavior without crashing under "sensible" input.
+ *
+ *   ALSO...
+ *     DO NOT MOVE ANY OF THE PROVIDED DATA STRUCTURES OUT OF main()!
+ *
+ *
+ *   THE ONLY POSSIBLE SCORES:
+ *
+ *    ( 0 out of 50)  -- You do not complete STEP 1.
+ *
+ *                       Your program compiles. When ran it displays
+ *                       the house but the lights do not correspond to
+ *                       the initial state of the game state matrix
+ *                       'state[]'.
+ *
+ *    (20 out of 50)  -- You completed only STEP 1.
+ *
+ *                       Your program compiles.  When ran it properly
+ *                       displays the house with windows being either
+ *                       lit or unlit as prescribed by the initial
+ *                       values in the game state matrix 'state[]'.  The
+ *                       user is prompted for input, but selecting a
+ *                       window does not toggle it (or any other window).
+ *                       When an invalid input is received, a message is
+ *                       printed telling the user the input is invalid
+ *                       and then asks for input again.  When the user
+ *                       enters 0, the program exits.
+ *
+ *    (30 out of 50)  -- You completed STEP 1 and STEP 2.
+ *
+ *                       Your program compiles.  When ran it properly
+ *                       displays the house with windows being either
+ *                       lit or unlit as prescribed by the initial
+ *                       values in the game state matrix 'state[]'.  The
+ *                       user is prompted for input, and selecting a
+ *                       window toggles the state of the selected window
+ *                       and updates the graphics for that window to
+ *                       reflect its new state (either lit or unlit).
+ *                       When an invalid input is received, a message is
+ *                       printed telling the user the input is invalid
+ *                       and then asks for input again.  When the user
+ *                       enters 0, the program exits.
+ *
+ *    (40 out of 50)  -- You completed STEP 1, STEP 2, and STEP 3
+ *
+ *                       Your program compiles.  When ran it properly
+ *                       displays the house with windows being either
+ *                       lit or unlit as prescribed by the initial
+ *                       values in the game state matrix 'state[]'.  The
+ *                       user is prompted for input, and selecting a
+ *                       window toggles the state of the selected window
+ *                       AND ITS NEIGHBORING WINDOWS.  The graphics for
+ *                       the toggled windows is updated to reflect their
+ *                       new states (either lit or unlit).  When an
+ *                       invalid input is received, a message is printed
+ *                       telling the user the input is invalid and then
+ *                       asks for input again.  When the user enters 0,
+ *                       the program exits.
+ *
+ *    (50 out of 50)  -- You completed ALL 4 STEPS (Congratulations!)
+ *
+ *                       Your program compiles.  When ran it properly
+ *                       displays the house with windows being either
+ *                       lit or unlit as prescribed by the initial
+ *                       values in the game state matrix 'state[]'.  The
+ *                       user is prompted for input, and selecting a
+ *                       window toggles the state of the selected window
+ *                       AND ITS NEIGHBORING WINDOWS.  The graphics for
+ *                       the toggled windows is updated to reflect their
+ *                       new states (either lit or unlit).  When an
+ *                       invalid input is received, a message is printed
+ *                       telling the user the input is invalid and then
+ *                       asks for input again.  When the user enters 0,
+ *                       the program exits. When all windows are unlit,
+ *                       the game prints a message congratulating the
+ *                       user and exits.
+ *
+ * ------------------------- SUBMITTING -------------------------------
+ *
+ * 1. Remove this GIANT 194 line comment block of instructions!
+ *
+ * 2. Download your project's zip file from repl.it and upload it to BBLearn
+ *
+ * 3. Late assignments will not be accepted.  Please don't ask.
+ */
